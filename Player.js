@@ -2,8 +2,13 @@
 
 class Player {
 	constructor() {
+		this._initiated = false;
 		this.audioContext = new AudioContext();
 		this.osc = this.audioContext.createOscillator();
+		if (document.getElementById("useTrombone").checked == true) {
+			this.wave = this.audioContext.createPeriodicWave(tromboneWaveTable.real, tromboneWaveTable.imag);
+			this.osc.setPeriodicWave(this.wave);
+		}
 	}
 
 	init() {
@@ -16,9 +21,12 @@ class Player {
 		} else {
 			this.osc.frequency.value = frequency;
 			this.osc.start();
+			this._initiated = true;
 		}
 	}
-
+	hasBeenInitiated() {
+		return this._initiated;
+	}
 	changeFrequency(newFrequency) {
 		this.osc.frequency.value = newFrequency;
 	}
