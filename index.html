@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width">
-		<title>repl.it</title>
-		<link href="style.css" rel="stylesheet" type="text/css" />
-	</head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
 
-	<body>
-		<input type="text" placeholder="<note> <octave>" id="noteIn"/>
-		<button onclick=""
-		<script src="Player.js"></script>
-		<script src="Note.js"></script>
-		<script src="script.js"></script>
-	</body>
+  <body>
+    <input type="text" placeholder="&lt;note&gt; <octave>" id="noteIn" />
+    <button onclick="doStuff()">Done</button>
+    <hr>
+    <div class="mmlInputSection">
+      <textarea name="MMLInput" id="mmlInput" cols="30" rows="10" placeholder="Insert mml hear"></textarea>
+      <input type="checkbox" id="useTrombone" value="true"/>
+      <button onclick="doParsing()">Parse MML</button>
+    </div>
+    <script src="Instruments/trombone_wavetable.js"></script>
+    <script src="Player.js"></script>
+    <script src="Note.js"></script>
+    <script src="Music.js"></script>
+    <script src="parser.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
