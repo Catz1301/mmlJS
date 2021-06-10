@@ -6,17 +6,17 @@ var noteInput = prompt("Enter a note: ");
 // console.log(noteInput);
 var noteFreq = null;
 var noteName = null;
+var noteInputEl = document.getElementById('noteIn');
+
+function doStuff() {
+	if (noteInputEl.value == "") {
+		console.log("Enter something in the box!");
+		return;
+	}
 try {
     let note = "";
     let octave = -1;
-    //console.log("try/catch block: noteInput value =", noteInput);
-    // noteInputArr = noteInput.split(' ');
-    // noteInputArrLen = noteInputArr.length;
-    // console.log({
-    //     noteInput,
-    //     noteInputArr,
-    //     noteInputArrLen
-    // });
+    
     if (noteInput.split(' ').length > 1) {
         let noteOctaveArr = noteInput.split(' ');
         note = noteOctaveArr[0];
