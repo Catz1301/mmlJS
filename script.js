@@ -1,12 +1,13 @@
 var noteString;
 var player = new Player();
 player.init();
-console.log("Meow");
-// var noteInput = prompt("Enter a note: ");
-// console.log(noteInput);
+
 var noteFreq = null;
 var noteName = null;
 var noteInputEl = document.getElementById('noteIn');
+var notePlayer = null;
+var currentNote = 0;
+const timeBase = 60_000;
 
 function doStuff() {
 	if (noteInputEl.value == "") {
@@ -49,18 +50,42 @@ function doParsing() {
 	let mmlArea = document.getElementById("mmlInput");
 	let mml = mmlArea.value;
 	// console.log(mml);
-	let freqs = parseMML(mml);
+	parseMML(mml);
 	player.init();
 	if (!player.hasBeenInitiated())
 		player.play(Note.getNoteFrequency("c", 4));
-	let i = 0;
-	//player.play();
-	let notes = setInterval(() => {
-		if (i < freqs.length) {
-			player.changeFrequency(freqs[i]);
-		}
-		i++;
-	}, 700);
+	let mmlControls = document.getElementById("mmlControls");
+	mmlControls.style.display = "block";
 }
 
+function playMML() {
+	if (notePlayer == null) {
+		if (frequencies.length > 0) {
+			currentNote = 0;
+			player.resume();
+			notePlayer = setInterval(() => {
+				if (currentNote < frequencies.length) {
+					player.changeFrequency(frequencies[currentNote]);
+				}
+				currentNote++;
+			}, 500);
+			let pauseBtn = document.getElementById('pauseMML');
+			pauseBtn.disabled = false;
+		}
+	} else {
+		console.error("There is already a player playing.");
+		alert("Already playing!");
+	}
+}
+
+function pauseMML() {
+	if (notePlayer != null) {
+		clearInterval(notePlayer);
+		notePlayer = null;
+		player.pause();
+	} else {
+		console.error("Player is already stopped.");
+		alert("Already stopped!");
+	}
+}
 //322 lines of code - 10/06/2021

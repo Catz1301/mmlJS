@@ -3,7 +3,7 @@ class Music {
 		if (notes instanceof Array) {
 			for (let note in notes) {
 				if (!(note instanceof Note)) {
-					throw new TypeError("Music constructor must be provided with array containing only objects that ar instances of Note.");
+					throw new TypeError("Music constructor must be provided with array containing only objects that are instances of Note.");
 				}
 			}
 		}

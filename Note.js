@@ -127,8 +127,8 @@ class Note {
 
 		if (modifier == '-')
 			halfSteps--;
-		else if (modifier == '#' || modifier == '+');
-		halfSteps++;
+		else if (modifier == '#' || modifier == '+')
+			halfSteps++;
 		console.log("Half Steps: " + halfSteps);
 
 		let halfStepBase = Math.pow(2.0, (1.0 / 12.0));

@@ -6,6 +6,7 @@ function parseMML(mml) {
 	for (let i = 0; i < mml.length; i++) {
 		console.log(mml[i]);
 		let note = null;
+		let noteLength = "";
 		if (mml[i] == '<') { // check if character is octave increase operand
 			if (octave != 8)
 				octave++
@@ -31,9 +32,32 @@ function parseMML(mml) {
 		} else if ((/[a-gA-G]/).test(mml[i].toString())) { // check if character is a character in the range of a through g, case-insensitive.
 			note = mml[i];
 			if (i+1 < mml.length) {
-				if ((mml[i+1] == "#" || mml[i+1] == "+") || mml[i] == "-") { // check if a modifier exists afterwards;
+				if ((mml[i+1] == "#" || mml[i+1] == "+") || mml[i+1] == "-") { // check if a modifier exists afterwards;
 					note = note + mml[i+1];
 					++i;
+					if (i+1 < mml.length) {
+						while ((i+1 < mml.length) && (/[0-9]/).test(mml[i+1])) {
+							noteLength = mml[i+1];
+							++i;
+						}
+						if (noteLength == "") {
+							noteLength = "4";
+						}
+						if (!(
+							noteLength == "1" ||
+							noteLength == "2" ||
+							noteLength == "4" ||
+							noteLength == "8" ||
+							noteLength == "16" ||
+							noteLength == "32" ||
+							noteLength == "64" ||
+							noteLength == "128" ||
+							noteLength == "256" ||
+							noteLength == "512")
+						) {
+							throw new ArgumentError("Note length must be between 1-512, and must also be a multiple of two, with the exception of 1");
+						}
+					}
 				}
 			}
 			

@@ -4102,6 +4102,6 @@ const tromboneWaveTable_Source = {
 }
 
 const tromboneWaveTable = {
-  'real': Float32Array.from(wavetableSource.real),
-  'imag': Float32Array.from(wavetableSource.imag),
+  'real': Float32Array.from(tromboneWaveTable_Source.real),
+  'imag': Float32Array.from(tromboneWaveTable_Source.imag),
 };

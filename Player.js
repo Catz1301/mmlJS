@@ -24,9 +24,19 @@ class Player {
 			this._initiated = true;
 		}
 	}
+
+	playMusic(musicObject) {
+		if (!(frequency instanceof Music)) {
+			throw new TypeError("musicObject must be an instance of Music");
+		} else {
+			// Change this later so that BPM can be dynamic
+		}
+	}
+
 	hasBeenInitiated() {
 		return this._initiated;
 	}
+	
 	changeFrequency(newFrequency) {
 		this.osc.frequency.value = newFrequency;
 	}

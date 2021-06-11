@@ -1,63 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
 
-  <body>
-    <input type="text" placeholder="&lt;note&gt; <octave>" id="noteIn" />
-    <button onclick="doStuff()">Done</button>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>repl.it</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <input type="text" placeholder="&lt;note&gt; <octave>" id="noteIn" />
+  <button onclick="doStuff()">Done</button>
+  <hr>
+  <div class="mmlInputSection">
+    <textarea name="MMLInput" id="mmlInput" cols="30" rows="10" placeholder="Insert mml here"></textarea>
+    <input type="checkbox" id="useTrombone" value="true" />
+    <button onclick="doParsing()">Parse MML</button>
     <hr>
-    <div class="mmlInputSection">
-      <textarea name="MMLInput" id="mmlInput" cols="30" rows="10" placeholder="Insert mml hear"></textarea>
-      <input type="checkbox" id="useTrombone" value="true"/>
-      <button onclick="doParsing()">Parse MML</button>
+    <div class="mmlControlBlock" id="mmlControls" style="display: none;">
+      <button id="playMML" onclick="playMML()">Play</button>
+      <button id="pauseMML" onclick="pauseMML()" disabled>Pause</button>
     </div>
-    <script src="Instruments/trombone_wavetable.js"></script>
-    <script src="Player.js"></script>
-    <script src="Note.js"></script>
-    <script src="Music.js"></script>
-    <script src="parser.js"></script>
-    <script src="script.js"></script>
-  <!-- Code injected by live-server -->
-<script type="text/javascript">
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script></body>
+  </div>
+  <script src="Instruments/trombone_wavetable.js"></script>
+  <script src="Player.js"></script>
+  <script src="Note.js"></script>
+  <script src="Music.js"></script>
+  <script src="parser.js"></script>
+  <script src="script.js"></script>
+  </script>
+</body>
+
 </html>
