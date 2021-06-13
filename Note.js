@@ -1,5 +1,5 @@
 class Note {
-	constructor(noteStr = "c", octave = 4) {
+	constructor(noteStr = "c", octave = 4, noteLength = 4) {
 		if (typeof (noteStr) == Number) {
 			this.frequency = noteStr;
 		} else {
@@ -29,6 +29,7 @@ class Note {
 			}
 			this.frequency = Note.getNoteFrequency(noteStr, octaveParsed);
 		}
+		this.noteLength = noteLength;
 	}
 
 	static getNoteFrequency(noteStr, octave) {

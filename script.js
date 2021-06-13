@@ -46,20 +46,30 @@ function doStuff() {
 }
 
 function doParsing() {
-	frequencies = [];
+	musicNotes = [];
 	let mmlArea = document.getElementById("mmlInput");
 	let mml = mmlArea.value;
 	// console.log(mml);
 	parseMML(mml);
-	player.init();
-	if (!player.hasBeenInitiated())
-		player.play(Note.getNoteFrequency("c", 4));
+	
+	
 	let mmlControls = document.getElementById("mmlControls");
 	mmlControls.style.display = "block";
 }
 
 function playMML() {
+	let music = new Music(musicNotes);
+	player.init();
+	player.playMusic(music);
+}
+
+function playMML2() {
 	if (notePlayer == null) {
+		for (let note in musicNotes) {
+			if (note instanceof Note) {
+				frequencies[frequencies.length] = note.frequency;
+			}
+		}
 		if (frequencies.length > 0) {
 			currentNote = 0;
 			player.resume();
