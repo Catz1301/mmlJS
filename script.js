@@ -7,7 +7,9 @@ var noteName = null;
 var noteInputEl = document.getElementById('noteIn');
 var notePlayer = null;
 var currentNote = 0;
-const timeBase = 60_000;
+//@ts-ignore
+const timeBase = 60000;
+document.addEventListener('keydown', decGain);
 
 function doStuff() {
 	if (noteInputEl.value == "") {
@@ -29,7 +31,7 @@ function doStuff() {
 			octave = 6;
 		}
 		let noteFrequency = Note.getNoteFrequency(note, octave);
-		document.write("Frequency of " + note + " on octave " + octave + " is: " + noteFrequency);
+		document.getElementById('status').innerText = "Frequency of " + note + " on octave " + octave + " is: " + noteFrequency;
 		noteFreq = noteFrequency;
 		noteName = note;
 	} catch (e) {
@@ -51,9 +53,9 @@ function doParsing() {
 	let mml = mmlArea.value;
 	// console.log(mml);
 	parseMML(mml);
-	player.init();
 	if (!player.hasBeenInitiated())
 		player.play(Note.getNoteFrequency("c", 4));
+	// player.init();
 	let mmlControls = document.getElementById("mmlControls");
 	mmlControls.style.display = "block";
 }
@@ -65,7 +67,7 @@ function playMML() {
 			player.resume();
 			notePlayer = setInterval(() => {
 				if (currentNote < frequencies.length) {
-					player.changeFrequency(frequencies[currentNote]);
+					player.changeFrequency(player.oscillators[0], frequencies[currentNote]);
 				}
 				currentNote++;
 			}, 500);
@@ -88,4 +90,13 @@ function pauseMML() {
 		alert("Already stopped!");
 	}
 }
+
+function decGain(e) {
+	if (e.key == "g") {
+		if (player != null && player != undefined && player.hasBeenInitiated()) {
+			player.setGain(player._gain.gain.value -= 0.05);
+		}
+	}
+}
+
 //322 lines of code - 10/06/2021
