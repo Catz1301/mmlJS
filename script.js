@@ -4,14 +4,42 @@ player.init();
 
 var noteFreq = null;
 var noteName = null;
-var noteInputEl = document.getElementById('noteIn');
+var noteInputEl = document.getElementById("noteIn");
 var notePlayer = null;
 var currentNote = 0;
 //@ts-ignore
+// eslint-disable-next-line no-unused-vars
 const timeBase = 60000;
-document.addEventListener('keydown', decGain);
+document.addEventListener("keydown", decGain);
+
+function test() {
+	let oscConfig = {
+		type: "OscillatorSettings",
+		waveType: "sine" /* player.wave */ ,
+		frequency: 660,
+		connectToGain: true
+	}
+	player.addOscillator(oscConfig);
+	oscConfig.frequency = 440;
+	player.addOscillator(440);
+	player.play();
+}
+
+function toggleTrombone() {
+	let usingTrombone = document.getElementById('useTrombone').checked;
+	if (usingTrombone) {
+		for (let i = 0; i < player.oscillators.length; i++) {
+			player.oscillators[i].setPeriodicWave(player.wave);
+		}
+	} else {
+		for (let i = 0; i < player.oscillators.length; i++) {
+			player.oscillators[i].type = "sine"
+		}
+	}
+}
 
 function doStuff() {
+	var noteInput;
 	if (noteInputEl.value == "") {
 		alert("Enter something in the note octave box!");
 		return;
@@ -22,8 +50,8 @@ function doStuff() {
 		let note = "";
 		let octave = -1;
 
-		if (noteInput.split(' ').length > 1) {
-			let noteOctaveArr = noteInput.split(' ');
+		if (noteInput.split(" ").length > 1) {
+			let noteOctaveArr = noteInput.split(" ");
 			note = noteOctaveArr[0];
 			octave = noteOctaveArr[1];
 		} else {
@@ -31,12 +59,12 @@ function doStuff() {
 			octave = 6;
 		}
 		let noteFrequency = Note.getNoteFrequency(note, octave);
-		document.getElementById('status').innerText = "Frequency of " + note + " on octave " + octave + " is: " + noteFrequency;
+		document.getElementById("status").innerText = "Frequency of " + note + " on octave " + octave + " is: " + noteFrequency;
 		noteFreq = noteFrequency;
 		noteName = note;
 	} catch (e) {
 		console.log(e.name);
-		console.log(e)
+		console.log(e);
 	}
 
 	if (noteFreq != null) {
@@ -71,7 +99,7 @@ function playMML() {
 				}
 				currentNote++;
 			}, 500);
-			let pauseBtn = document.getElementById('pauseMML');
+			let pauseBtn = document.getElementById("pauseMML");
 			pauseBtn.disabled = false;
 		}
 	} else {

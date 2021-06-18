@@ -13,9 +13,9 @@ class Note {
 					return -1;
 				}
 				modifier = noteStr.toLowerCase().charAt(1);
-				if (!((modifier == '#' || modifier == '+') || modifier == '-')) {
+				if (!((modifier == "#" || modifier == "+") || modifier == "-")) {
 					alert("Valid note modifiers are #, +, or -!");
-					return (double) - 1;
+					return -1;
 				}
 			}
 			// console.log(note, "modifier:", modifier);
@@ -42,9 +42,9 @@ class Note {
 				return -1;
 			}
 			modifier = noteStr.toLowerCase().charAt(1);
-			if (!((modifier == '#' || modifier == '+') || modifier == '-')) {
+			if (!((modifier == "#" || modifier == "+") || modifier == "-")) {
 				alert("Valid note modifiers are #, +, or -!");
-				return (double) - 1;
+				return -1;
 			}
 		}
 		// console.log(note, "modifier:", modifier);
@@ -57,7 +57,7 @@ class Note {
 			return -1;
 		}
 		let tuningPitch = 261.6255653005986;
-		let tuningNote = 'c';
+		let tuningNote = "c";
 		let tuningOctave = 4;
 
 		let halfSteps = 0;
@@ -68,17 +68,17 @@ class Note {
 			if (note.charCodeAt(0) == tuningNote.charCodeAt(0)) {
 				return 261.6255653005986;
 			} else /* if (note.charCodeAt(0) > tuningNote.charCodeAt(0)) */ {
-				if (note == 'd') {
+				if (note == "d") {
 					halfSteps += 2;
-				} else if (note == 'e') {
+				} else if (note == "e") {
 					halfSteps += 4;
-				} else if (note == 'f') {
+				} else if (note == "f") {
 					halfSteps += 5;
-				} else if (note == 'g') {
+				} else if (note == "g") {
 					halfSteps += 7;
-				} else if (note == 'a') {
+				} else if (note == "a") {
 					halfSteps += 9;
-				} else if (note == 'b') {
+				} else if (note == "b") {
 					halfSteps += 11;
 				}
 			}
@@ -90,17 +90,17 @@ class Note {
 			}
 			//}
 			// if (note.charCodeAt(0) > tuningNote.charCodeAt(0)) {
-			if (note == 'd') {
+			if (note == "d") {
 				halfSteps += 2;
-			} else if (note == 'e') {
+			} else if (note == "e") {
 				halfSteps += 4;
-			} else if (note == 'f') {
+			} else if (note == "f") {
 				halfSteps += 5;
-			} else if (note == 'g') {
+			} else if (note == "g") {
 				halfSteps += 7;
-			} else if (note == 'a') {
+			} else if (note == "a") {
 				halfSteps += 9;
-			} else if (note == 'b') {
+			} else if (note == "b") {
 				halfSteps += 11;
 			}
 			// }
@@ -109,25 +109,25 @@ class Note {
 				halfSteps -= 12;
 			}
 			// if (note.charCodeAt(0) > tuningNote.charCodeAt(0)) {
-			if (note == 'd') {
+			if (note == "d") {
 				halfSteps += 2;
-			} else if (note == 'e') {
+			} else if (note == "e") {
 				halfSteps += 4;
-			} else if (note == 'f') {
+			} else if (note == "f") {
 				halfSteps += 5;
-			} else if (note == 'g') {
+			} else if (note == "g") {
 				halfSteps += 7;
-			} else if (note == 'a') {
+			} else if (note == "a") {
 				halfSteps += 9;
-			} else if (note == 'b') {
+			} else if (note == "b") {
 				halfSteps += 11;
 			}
 			// }
 		}
 
-		if (modifier == '-')
+		if (modifier == "-")
 			halfSteps--;
-		else if (modifier == '#' || modifier == '+')
+		else if (modifier == "#" || modifier == "+")
 			halfSteps++;
 		console.log("Half Steps: " + halfSteps);
 
@@ -147,9 +147,9 @@ class Note {
 				return -1;
 			}
 			modifier = noteStr.toLowerCase().charAt(1);
-			if (!((modifier == '#' || modifier == '+') || modifier == '-')) {
+			if (!((modifier == "#" || modifier == "+") || modifier == "-")) {
 				alert("Valid note modifiers are #, +, or -!");
-				return (double) - 1;
+				return -1;
 			}
 		}
 		// console.log(note, "modifier:", modifier);
@@ -161,8 +161,7 @@ class Note {
 			alert("Valid octave range is 1 - 8 (inclusive)!");
 			return -1;
 		}
-		let tuningPitch = 261.6255653005986;
-		let tuningNote = 'c';
+		let tuningNote = "c";
 		let tuningOctave = 4;
 
 		let halfSteps = 0;
@@ -173,17 +172,17 @@ class Note {
 			if (note.charCodeAt(0) == tuningNote.charCodeAt(0)) {
 				return 60;
 			} else /* if (note.charCodeAt(0) > tuningNote.charCodeAt(0)) */ {
-				if (note == 'd') {
+				if (note == "d") {
 					halfSteps += 2;
-				} else if (note == 'e') {
+				} else if (note == "e") {
 					halfSteps += 4;
-				} else if (note == 'f') {
+				} else if (note == "f") {
 					halfSteps += 5;
-				} else if (note == 'g') {
+				} else if (note == "g") {
 					halfSteps += 7;
-				} else if (note == 'a') {
+				} else if (note == "a") {
 					halfSteps += 9;
-				} else if (note == 'b') {
+				} else if (note == "b") {
 					halfSteps += 11;
 				}
 			}
@@ -195,17 +194,17 @@ class Note {
 			}
 			//}
 			// if (note.charCodeAt(0) > tuningNote.charCodeAt(0)) {
-			if (note == 'd') {
+			if (note == "d") {
 				halfSteps += 2;
-			} else if (note == 'e') {
+			} else if (note == "e") {
 				halfSteps += 4;
-			} else if (note == 'f') {
+			} else if (note == "f") {
 				halfSteps += 5;
-			} else if (note == 'g') {
+			} else if (note == "g") {
 				halfSteps += 7;
-			} else if (note == 'a') {
+			} else if (note == "a") {
 				halfSteps += 9;
-			} else if (note == 'b') {
+			} else if (note == "b") {
 				halfSteps += 11;
 			}
 			// }
@@ -214,25 +213,25 @@ class Note {
 				halfSteps -= 12;
 			}
 			// if (note.charCodeAt(0) > tuningNote.charCodeAt(0)) {
-			if (note == 'd') {
+			if (note == "d") {
 				halfSteps += 2;
-			} else if (note == 'e') {
+			} else if (note == "e") {
 				halfSteps += 4;
-			} else if (note == 'f') {
+			} else if (note == "f") {
 				halfSteps += 5;
-			} else if (note == 'g') {
+			} else if (note == "g") {
 				halfSteps += 7;
-			} else if (note == 'a') {
+			} else if (note == "a") {
 				halfSteps += 9;
-			} else if (note == 'b') {
+			} else if (note == "b") {
 				halfSteps += 11;
 			}
 			// }
 		}
 
-		if (modifier == '-')
+		if (modifier == "-")
 			halfSteps--;
-		else if (modifier == '#' || modifier == '+')
+		else if (modifier == "#" || modifier == "+")
 			halfSteps++;
 		return halfSteps;
 	}
