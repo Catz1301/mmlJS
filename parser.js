@@ -1,7 +1,12 @@
 var frequencies = [];
 
-function parseMML(mml) {
+/* function preParseMML(mml) {
+	
+	for (let i = 0; i < mml.length)
+} */
 
+function parseMML(mml) {
+	mml = preParseMML(mml);
 	let octave = 4;
 	for (let i = 0; i < mml.length; i++) {
 		console.log(mml[i]);
